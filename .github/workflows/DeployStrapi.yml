@@ -25,7 +25,9 @@ jobs:
       uses: borales/actions-yarn@v4
       with:
         cmd: install # will run `yarn install` command
+        dir: 'porcupine-cms'
     - name: build
       uses: borales/actions-yarn@v4
       with:
         cmd: build:prod # will run `yarn build` command
+        dir: 'porcupine-cms'

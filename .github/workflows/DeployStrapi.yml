@@ -4,6 +4,7 @@ on:
     branches: [master]
     paths:
       - 'porcupine-cms/**'
+      - '.github/**'
 defaults:
   run:
     working-directory: porcupine-cms

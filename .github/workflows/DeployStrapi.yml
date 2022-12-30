@@ -1,9 +1,9 @@
 name: Strapi Production Deployment
 on:
   push:
-    branches: [main]
-    #paths:
-    #  - porcupine-cms/**
+    branches: [master]
+    paths:
+      - porcupine-cms/**
 defaults:
   run:
     working-directory: porcupine-cms

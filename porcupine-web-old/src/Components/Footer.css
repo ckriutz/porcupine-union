@@ -1,0 +1,13 @@
+#footer .copyright {
+    color: #9fa3a6;
+    font-size: 0.9em;
+}
+
+#footer .copyright a {
+    color: inherit;
+}
+
+#footer .text {
+    padding-top: 10px;
+    text-align: justify;
+}

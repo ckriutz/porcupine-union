@@ -13,13 +13,14 @@ jobs:
     runs-on: ubuntu-20.04    
     steps:
     - uses: actions/checkout@v2
-    #- name: Install and setup Node version 14.19.1
-    #  uses: actions/setup-node@v3      
-    #  with:
-    #    node-version: '14.19.1'
-    #    cache: 'yarn'
-    - name: List Directory
-      run: ls
+    - name: Install and setup Node version 14.19.1
+      uses: actions/setup-node@v3      
+      with:
+        node-version: '14.19.1'
+        cache: 'yarn'
+        cache-dependency-path: porcupine-cms/yarn.lock
+    #- name: List Directory
+    #  run: ls
     - name: install
       uses: borales/actions-yarn@v4
       with:
@@ -27,4 +28,4 @@ jobs:
     - name: build
       uses: borales/actions-yarn@v4
       with:
-        cmd: build:prod # will run `yarn install` command
+        cmd: build:prod # will run `yarn build` command

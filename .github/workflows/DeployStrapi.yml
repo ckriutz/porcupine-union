@@ -2,8 +2,8 @@ name: Strapi Production Deployment
 on:
   push:
     branches: [master]
-    #paths:
-    #  - porcupine-cms/**
+    paths:
+      - 'porcupine-cms/**'
 defaults:
   run:
     working-directory: porcupine-cms
@@ -17,6 +17,8 @@ jobs:
       with:
         node-version: '14.19.1'
         cache: 'yarn'
+    - name: Lisst Directory
+      run: ls
     - name: install
       uses: borales/actions-yarn@v4
       with:

@@ -7,9 +7,9 @@ on:
       - '.github/**'
 
 env:
-  AZURE_WEBAPP_NAME: lpunionnc-cms                # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: 'my-app-path'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '16.x'                          # set this to the node version to use
+  AZURE_WEBAPP_NAME: 'lpunionnc-cms'                # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: 'porcupine-cms/build/'  # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '16.x'                              # set this to the node version to use
 
 defaults:
   run:
@@ -42,4 +42,4 @@ jobs:
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        #package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

@@ -5,11 +5,16 @@ function MiniArticle(props) {
             <a href="#" class="image"><img src={props.imgSrc} alt="" /></a>
             <h3>Mini Article!</h3>
             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            <ul class="actions">
+            {/*<ul class="actions">
                 <li><a href="#" class="button">More</a></li>
-            </ul>
+            </ul> */}
+            <button class="actions" onClick={foo}>Perform action</button>
         </article>
     );
+}
+
+function foo() {
+    console.log("Clicked");
 }
 
 export default MiniArticle;

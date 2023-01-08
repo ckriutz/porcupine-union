@@ -1,20 +1,36 @@
+import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
 import './MiniArticle.css';
+
 function MiniArticle(props) {
+    const [MiniArticleData, setData] = useState([])
+    const [MiniArticleImage, setImageData] = useState([])
+    const headers = {
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+     };
+    
+    useEffect(() => async() => {
+        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/posts/' + props.id+'?populate=*', {method:'GET', headers:headers});
+        const json = await response.json();
+        setData(json.data.attributes);
+        setImageData(json.data.attributes.Image.data.attributes.url);
+        
+    }, [props]);
+
     return (
         <article>
-            <a href="#" class="image"><img src={props.imgSrc} alt="" /></a>
-            <h3>Mini Article!</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            {/*<ul class="actions">
-                <li><a href="#" class="button">More</a></li>
-            </ul> */}
-            <button class="actions" onClick={foo}>Perform action</button>
+            <a href="#" className="image"><img src={MiniArticleImage} /></a>
+            <h3>{MiniArticleData.Title}</h3>
+            <p>{MiniArticleData.Description}</p>
+            <ul className='actions'>
+                <li>
+                    <Link to={{pathname: '/post/' + MiniArticleData.Slug}}>
+                        <button>More</button>
+                    </Link>
+                </li>
+            </ul>
         </article>
     );
-}
-
-function foo() {
-    console.log("Clicked");
 }
 
 export default MiniArticle;

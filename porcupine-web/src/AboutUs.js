@@ -1,4 +1,4 @@
-function AboutUs(props) {
+function AboutUs() {
     return(
         <section>
             Ok

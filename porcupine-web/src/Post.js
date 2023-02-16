@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
 import { format } from 'date-fns'
+import ReactMarkdown from 'react-markdown'
 const qs = require('qs');
 
 function Post(props) {
@@ -41,7 +42,7 @@ function Post(props) {
             <header className="main"><h1>{postData[0].attributes.Title}</h1></header>
             <p class="fw-light">{format(new Date(postData[0].attributes.publishedAt), 'MMMM do yyyy')}</p>
             <span className="image main" style={{ maxWidth: 620 }}><img src={postData[0].attributes.Image.data.attributes.formats.small.url} alt="" /></span>
-            <div>{postData[0].attributes.Body}</div>
+            <div><ReactMarkdown children={postData[0].attributes.Body} /></div>
         </section>
     );
 }

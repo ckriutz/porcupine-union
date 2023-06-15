@@ -8,7 +8,7 @@ function GetInTouch() {
      };
     
     useEffect(() => async() => {
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/getintouch?populate=*', {method:'GET', headers:headers});
+        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/get-in-touch?populate=*', {method:'GET', headers:headers});
         const json = await response.json();
         setData(json.data.attributes);
     }, []);

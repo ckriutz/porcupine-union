@@ -19,7 +19,7 @@ function MiniArticle(props) {
 
     return (
         <article>
-            <a href="#" className="image"><img src={MiniArticleImage} /></a>
+            <Link to={{pathname: '/post/' + MiniArticleData.Slug}} className='image'><img src={MiniArticleImage} /></Link>
             <h3>{MiniArticleData.Title}</h3>
             <p>{MiniArticleData.Description}</p>
             <ul className='actions'>

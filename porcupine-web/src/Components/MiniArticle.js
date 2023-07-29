@@ -6,11 +6,11 @@ function MiniArticle(props) {
     const [MiniArticleData, setData] = useState([])
     const [MiniArticleImage, setImageData] = useState([])
     const headers = {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_TOKEN
      };
     
     useEffect(() => async() => {
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/posts/' + props.id+'?populate=*', {method:'GET', headers:headers});
+        const response = await fetch(process.env.REACT_APP_STRAPI_API_URL +'/api/posts/' + props.id+'?populate=*', {method:'GET', headers:headers});
         const json = await response.json();
         setData(json.data.attributes);
         setImageData(json.data.attributes.Image.data.attributes.url);

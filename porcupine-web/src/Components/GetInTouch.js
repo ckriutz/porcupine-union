@@ -4,11 +4,11 @@ import './GetInTouch.css';
 function GetInTouch() {
     const [GetInTouchData, setData] = useState([])
     const headers = {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_TOKEN
      };
     
     useEffect(() => async() => {
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/get-in-touch?populate=*', {method:'GET', headers:headers});
+        const response = await fetch(process.env.REACT_APP_STRAPI_API_URL +'/api/get-in-touch?populate=*', {method:'GET', headers:headers});
         const json = await response.json();
         setData(json.data.attributes);
     }, []);

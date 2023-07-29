@@ -6,7 +6,7 @@ const qs = require('qs');
 function Home() {
     const [postData, setPostData] = useState([])
     const headers = {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_TOKEN
      };
 
     //let posts = [];
@@ -26,7 +26,7 @@ function Home() {
             fields: ['Title', 'Description', 'Slug'],
             encodeValuesOnly: true, // prettify URL
         });
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/posts?' + query, {method:'GET', headers:headers});
+        const response = await fetch(process.env.REACT_APP_STRAPI_API_URL +'/api/posts?' + query, {method:'GET', headers:headers});
         const json = await response.json();
         return json.data;
 

@@ -12,7 +12,7 @@ function Sidebar(props) {
     const [postData, setPostData] = useState([])
     
     const headers = {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_TOKEN
      };
 
      useEffect(() => {
@@ -30,8 +30,7 @@ function Sidebar(props) {
             fields: ['Description', 'Link'],
             encodeValuesOnly: true, // prettify URL
         });
-        console.log('https://lpunionnc-cms.azurewebsites.net/api/newses?' + query);
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/newses?populate=*&' + query, {method:'GET', headers:headers});
+        const response = await fetch(process.env.REACT_APP_STRAPI_API_URL +'/api/newses?populate=*&' + query, {method:'GET', headers:headers});
         const json = await response.json();
         return json.data;
     };

@@ -1,0 +1,7 @@
+.image-main {
+    transition: opacity 500ms ease 0s;
+    max-width: 100%;
+    height: auto;
+    text-align: center;
+    object-fit: contain;
+}

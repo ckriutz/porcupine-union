@@ -7,11 +7,11 @@ function Banner() {
     const [BannerImage, setImageData] = useState([])
 
     const headers = {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_TOKEN
      };
     
     useEffect(() => async() => {
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/banner?populate=*', {method:'GET', headers:headers});
+        const response = await fetch(process.env.REACT_APP_STRAPI_API_URL + '/api/banner?populate=*', {method:'GET', headers:headers});
         const json = await response.json();
         await setData(json.data.attributes);
         await setImageData(json.data.attributes.BannerImage.data.attributes.url);

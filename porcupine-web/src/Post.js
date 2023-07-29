@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
+import './Post.css';
 const qs = require('qs');
 
 function Post(props) {
@@ -28,7 +29,6 @@ function Post(props) {
         });
         const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/posts?' + query, {method:'GET', headers:headers});
         const json = await response.json();
-        console.log(json.data);
         return json.data;
 
     };
@@ -39,9 +39,11 @@ function Post(props) {
     }
     return (
         <section>
-            <header className="main"><h1>{postData[0].attributes.Title}</h1></header>
-            <p class="fw-light">{format(new Date(postData[0].attributes.publishedAt), 'MMMM do yyyy')}</p>
-            <span className="image main" style={{ maxWidth: 620 }}><img src={postData[0].attributes.Image.data.attributes.formats.small.url} alt="" /></span>
+                <header className="main"><h2>{postData[0].attributes.Title}</h2></header>
+                <p className="fw-light">{format(new Date(postData[0].attributes.publishedAt), 'MMMM do yyyy')}</p>
+                <div className="image-main">
+                    <img src={postData[0].attributes.Image.data.attributes.formats.small.url} alt="" />
+                </div>
             <div><ReactMarkdown children={postData[0].attributes.Body} /></div>
         </section>
     );

@@ -3,7 +3,7 @@ services:
   strapi:
     container_name: strapi
     platform: linux/arm64
-    build: ./porcupine-cms-v4/Dockerfile
+    build: ./porcupine-cms-v4/.
     image: strapi:latest
     restart: unless-stopped
     env_file: .env

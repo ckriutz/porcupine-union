@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "get_in_touches",
+  "info": {
+    "singularName": "get-in-touch",
+    "pluralName": "get-in-touches",
+    "displayName": "GetInTouch"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Details": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    }
+  }
+}

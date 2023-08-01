@@ -5,11 +5,11 @@ function AboutUs() {
     const [AboutData, setData] = useState([])
 
     const headers = {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_TOKEN
      };
     
     useEffect(() => async() => {
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/about?populate=*', {method:'GET', headers:headers});
+        const response = await fetch(process.env.REACT_APP_STRAPI_API_URL + '/api/about?populate=*', {method:'GET', headers:headers});
         const json = await response.json();
         await setData(json.data.attributes);
     }, []);
@@ -18,7 +18,7 @@ function AboutUs() {
         <section>
             <h1>{AboutData.Title}</h1>
             <div>
-                <ReactMarkdown children={AboutData.Body} />      
+                <ReactMarkdown style={{width: "100%"}} children={AboutData.Body} />      
             </div>
         </section>
         

@@ -9,7 +9,7 @@ function Post(props) {
     const { slug } = useParams();
     const [postData, setPostData] = useState([])
     const headers = {
-        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_BEARER
+        'Authorization': 'Bearer ' + process.env.REACT_APP_STRAPI_TOKEN
      };
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function Post(props) {
             populate: '*',
             encodeValuesOnly: true, // prettify URL
         });
-        const response = await fetch('https://lpunionnc-cms.azurewebsites.net/api/posts?' + query, {method:'GET', headers:headers});
+        const response = await fetch(process.env.REACT_APP_STRAPI_API_URL +'/api/posts?' + query, {method:'GET', headers:headers});
         const json = await response.json();
         return json.data;
 
